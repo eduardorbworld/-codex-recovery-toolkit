@@ -1,0 +1,3 @@
+# Case study — Windows startup failure
+
+On 2026-11-26, a power interruption preceded the error `attempt to write a readonly database`. Repair, reset and reinstall did not fix it. The system drive was full. After removing incomplete redundant backups, 19.95 GiB was available. A separate-drive backup was made, including the SQLite database and rollback journal. Python 3.14.7 returned `ok` from `PRAGMA integrity_check` on an isolated copy and then on the original opened in read-write mode. The application subsequently opened. The precise underlying cause was not independently established. This is one observed manual recovery, not a guarantee or a test of the automated toolkit.
